@@ -1,26 +1,17 @@
 name: CI
 
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Name'
-        required: true
-
-  # push:
-  #   paths-ignore:
-  #     - '**/*.md'
-  #   branches-ignore:
-  #     - main
+  push:
+    paths-ignore:
+      - '**/*.md'
+    branches-ignore:
+      - main
 
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: print log
-        run: echo "Hello! ${{ github.event.inputs.name }}"
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:

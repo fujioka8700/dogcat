@@ -1,7 +1,14 @@
 name: CI
 
 on: 
-  # workflow_call:
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+    secrets:
+      envPAT:
+        required: true
   push:
     paths-ignore:
       - '**/*.md'
@@ -13,7 +20,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ runner.os }}
+      - uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.envPAT }}
+          configuration-path: ${{ inputs.config-path }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2

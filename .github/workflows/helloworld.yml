@@ -1,0 +1,17 @@
+name: Hello World
+
+on:
+  workflow_call:
+    inputs: # パラメータ定義
+      environment-name:
+        required: true
+        type: string
+        description: 'Environment name for GitHub Actions'
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment-name }} # inputs.~ でパラメータを使用可能
+    steps:
+      - run: echo "Hello World!"

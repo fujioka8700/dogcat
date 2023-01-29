@@ -29,3 +29,4 @@ jobs:
             composer install -n --no-dev --prefer-dist
             php artisan migrate --force
             php artisan config:cache
+            echo "$PW" | sudo -S ls -la

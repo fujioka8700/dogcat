@@ -7,11 +7,6 @@ on:
         required: true
         default: 1
         type: string
-    secrets:
-      envPAT:
-        required: true
-        default: 1
-        type: string
   push:
     paths-ignore:
       - '**/*.md'
@@ -23,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ secrets.envPAT }}
       - run: echo ${{ inputs.config-path }}
 
       - name: Setup PHP

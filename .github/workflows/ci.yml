@@ -2,11 +2,6 @@ name: CI
 
 on: 
   workflow_call:
-    inputs:
-      php-version:
-        description: 'php version'
-        default: 8.1
-        type: string
   push:
     paths-ignore:
       - '**/*.md'
@@ -18,10 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo ${{ runner.os }}
+      
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "${{ inputs.php-version }}"
+          php-version: '8.1'
 
       - uses: actions/checkout@v3
 

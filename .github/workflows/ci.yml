@@ -5,7 +5,7 @@ on:
     inputs:
       php-version:
         description: 'php version'
-        default: '8.1'
+        default: 8.1
         type: string
   push:
     paths-ignore:
@@ -21,7 +21,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ inputs.php-version }}
+          php-version: "${{ inputs.php-version }}"
 
       - uses: actions/checkout@v3
 

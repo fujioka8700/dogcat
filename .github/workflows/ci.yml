@@ -1,6 +1,11 @@
 name: CI
 
 on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name'
+        required: true
   push:
     paths-ignore:
       - '**/*.md'
@@ -12,10 +17,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ./.github/workflows/helloworld.yml # Reusable workflowを使う
-        name: Deploy Develop
-          with: # パラメータを渡す
-            environment-name: Develop
+      - name: print log
+        run: echo "Hello! ${{ github.event.inputs.name }}"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2

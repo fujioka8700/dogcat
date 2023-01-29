@@ -1,7 +1,16 @@
 name: CI
 
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      manager:
+        required: false
+        type: string
+        default: 'npm'
+      command:
+        required: false
+        type: string
+        default: 'php artisan key:generate'
   push:
     paths-ignore:
       - '**/*.md'
@@ -13,8 +22,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ./.github/workflows/callee.yml
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:

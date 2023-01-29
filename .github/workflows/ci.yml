@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ inputs.python-version }}
+      - run: echo "${{ inputs.python-version }}"
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:

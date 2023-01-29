@@ -23,10 +23,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/labeler@v4
-        with:
-          repo-token: ${{ secrets.envPAT }}
-          configuration-path: ${{ inputs.config-path }}
+      - run: echo ${{ secrets.envPAT }}
+      - run: echo ${{ inputs.config-path }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2

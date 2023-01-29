@@ -5,10 +5,12 @@ on:
     inputs:
       config-path:
         required: true
+        default: 1
         type: string
     secrets:
       envPAT:
         required: true
+        default: 1
   push:
     paths-ignore:
       - '**/*.md'

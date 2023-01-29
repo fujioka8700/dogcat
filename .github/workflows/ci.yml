@@ -2,28 +2,25 @@ name: CI
 
 on: 
   workflow_call:
-    inputs:
-      config-path:
-        required: true
-        default: 'hello'
-        type: string
   push:
     paths-ignore:
       - '**/*.md'
     branches-ignore:
       - main
 
+env:
+  php-version: 8.1
+
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ inputs.config-path }}
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          # php-version: '8.1'
+          php-version: ${{ env.php-version }}
 
       - uses: actions/checkout@v3
 

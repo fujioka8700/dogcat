@@ -5,7 +5,7 @@ on:
     inputs:
       php-version:
         description: 'php version'
-        default: 8.1
+        default: '8.1'
         type: string
   push:
     paths-ignore:

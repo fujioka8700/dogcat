@@ -49,7 +49,8 @@ jobs:
         run: composer dump-autoload
 
       - name: Generate key
-        run: php artisan key:generate
+        # run: php artisan key:generate
+        run: ${{ inputs.command }}
 
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache

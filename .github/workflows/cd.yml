@@ -24,3 +24,5 @@ jobs:
             cd dogcat
             git pull origin main
             composer install -n --no-dev --prefer-dist
+            npm ci
+            npm run build

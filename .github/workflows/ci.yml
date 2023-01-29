@@ -6,6 +6,7 @@ on:
       name:
         description: 'Name'
         required: true
+        default: 'World!'
   push:
     paths-ignore:
       - '**/*.md'

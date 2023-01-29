@@ -28,5 +28,6 @@ jobs:
             git pull origin main
             composer install -n --no-dev --prefer-dist
             php artisan migrate --force
+            echo "$PW" | sudo -S cp -r /home/ubuntu/dogcat /usr/share/nginx/
+            cd /usr/share/nginx/dogcat
             php artisan config:cache
-            echo "$PW" | sudo -S ls -la

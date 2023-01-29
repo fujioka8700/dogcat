@@ -1,12 +1,6 @@
 name: CI
 
 on: 
-  workflow_call:
-    inputs:
-      python-version:
-        description: 'Python version'
-        value: 3
-        type: string
   push:
     paths-ignore:
       - '**/*.md'
@@ -18,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ inputs.python-version }}
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:

@@ -1,14 +1,12 @@
-name: Laravel
+name: CI
 
-on:
+on: 
+  workflow_call:
   push:
-    branches:
-      - 'fix/**'
-      - 'feature/**'
-  pull_request:
-    branches:
+    paths-ignore:
+      - '**/*.md'
+    branches-ignore:
       - main
-      - develop
 
 jobs:
   laravel-tests:
@@ -57,20 +55,3 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: vendor/bin/phpunit
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    if: >-
-      ${{
-        github.ref == 'refs/heads/develop' ||
-        github.event.pull_request.merged == true
-      }}
-
-    needs: laravel-tests
-
-    steps:
-      - run: echo "Hello World!"
-
-    
-

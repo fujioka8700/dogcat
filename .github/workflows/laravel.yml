@@ -61,7 +61,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/main'
+    if:
+      - github.ref == 'refs/heads/develop'
+      - github.event.pull_request.merged == true
 
     needs: laravel-tests
 

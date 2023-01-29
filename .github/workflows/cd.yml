@@ -4,9 +4,22 @@ on:
   push:
     branches:
       - main
+      - 'feature/**'
 
 jobs:
-  say_hello:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Hello World!!"
+      - uses: actions/checkout@v3
+
+      - name: Install SSH Key for Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SK }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd dogcat
+            git pull origin main

@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: ./.github/workflows/callee.yml
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:

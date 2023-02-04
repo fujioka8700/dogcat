@@ -8,12 +8,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
 
     steps:
       - name: Install SSH Key for Deploy
         uses: appleboy/ssh-action@master
-        timeout-minutes: 20
         env:
           PW: ${{ secrets.PW }}
         with:

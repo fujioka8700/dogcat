@@ -28,6 +28,5 @@ jobs:
             composer install -n --no-dev --prefer-dist
             # echo $PW | sudo -S npm ci
             # echo $PW | sudo -S npm run build
-            # php artisan config:clear
             php artisan migrate --force
             php artisan config:cache

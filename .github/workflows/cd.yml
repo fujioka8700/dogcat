@@ -4,15 +4,12 @@ on:
   push:
     branches:
       - main
-      - 'feature/**'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
       - name: Install SSH Key for Deploy
         uses: appleboy/ssh-action@master
         env:
@@ -24,10 +21,10 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           envs: PW
           script: |
-            cd dogcat
+            cd /usr/share/nginx/dogcat
             git pull origin main
             composer install -n --no-dev --prefer-dist
+            echo $PW | sudo -S npm ci
+            echo $PW | sudo -S npm run build
             php artisan migrate --force
-            echo "$PW" | sudo -S cp -r /home/ubuntu/dogcat /usr/share/nginx/
-            cd /usr/share/nginx/dogcat
             php artisan config:cache

@@ -14,7 +14,7 @@ import BoxArrowUpRight from '../../../images/box-arrow-up-right.svg';
             class="d-flex align-items-center text-decoration-none logo-wrap"
           >
             <img :src="logo" alt="Ureshitterのロゴ" />
-            <h1 class="header-logo ms-1 text-black">E</h1>
+            <h1 class="header-logo ms-1 text-black">F</h1>
           </router-link>
         </div>
         <div>
